@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class SearchView extends StatelessWidget {
@@ -11,6 +13,9 @@ class SearchView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: TextField(
+            onSubmitted: (value) {
+              print(value);
+            },
             decoration: InputDecoration(
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 16,
