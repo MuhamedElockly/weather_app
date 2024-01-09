@@ -3,7 +3,7 @@ class WeatherModel {
   final String date;
   final String? image;
   final double temp;
-  final double maxTemp;
+  final double maxTemp; 
   final double minTemp;
   final String weatherCondition;
 
