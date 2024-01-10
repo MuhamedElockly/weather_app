@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      body: weatherModel == null ? NoWitherBody() : WeatherInfoBody(),
+      body: WeatherInfoBody(),
     );
   }
 }
