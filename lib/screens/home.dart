@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
           } else if (state is WeatherLoadedState) {
             return WeatherInfoBody();
           } else {
-            return NoWitherBody();
+            return Text('Ops, there was an error !');
           }
         },
       ),
