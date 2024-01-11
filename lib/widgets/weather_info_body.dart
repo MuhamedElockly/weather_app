@@ -55,7 +55,7 @@ class WeatherInfoBody extends StatelessWidget {
                   },
                 ),
                 Text(
-                  weathermodel.temp.toString(),
+                  weathermodel.temp.round().toString(),
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
