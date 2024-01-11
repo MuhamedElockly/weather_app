@@ -33,6 +33,14 @@ class WeatherInfoBody extends StatelessWidget {
             children: [
               Image.network(
                 'https:' + weathermodel.image.toString(),
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/clear.png',
+                    width: double.infinity,
+                    height: 200,
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
               Text(
                 weathermodel.temp.toString(),
@@ -44,11 +52,11 @@ class WeatherInfoBody extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Max : ' + weathermodel.maxTemp.toString(),
+                    'Max : ' + weathermodel.maxTemp.round().toString(),
                     style: TextStyle(fontSize: 18),
                   ),
                   Text(
-                    'Min : ' + weathermodel.minTemp.toString(),
+                    'Min : ' + weathermodel.minTemp.round().toString(),
                     style: TextStyle(fontSize: 18),
                   )
                 ],
