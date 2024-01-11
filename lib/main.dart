@@ -13,19 +13,37 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: MaterialApp(
-        theme: ThemeData(primarySwatch: getThemeColor(condition)),
-        debugShowCheckedModeBanner: false,
-        home: Home(),
-      ),
+      child: CustomMaterialApp(),
     );
   }
 }
 
-MaterialColor getThemeColor(String condition) {
+class CustomMaterialApp extends StatelessWidget {
+  const CustomMaterialApp({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: getThemeColor(
+          BlocProvider.of<GetWeatherCubit>(context)
+              .weatherModel?.weatherCondition,
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    );
+  }
+}
+
+MaterialColor getThemeColor(String? condition) {
+  if (condition == null) {
+    return Colors.blue;
+  }
   Map<String, Color> weatherColors = {
     'Sunny': Colors.yellow,
     'Partly cloudy': Colors.lightBlueAccent,

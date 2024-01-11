@@ -5,7 +5,7 @@ import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
 class WeatherInfoBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var weathermodel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+    var weathermodel = BlocProvider.of<GetWeatherCubit>(context).weatherModel!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
