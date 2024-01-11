@@ -31,11 +31,11 @@ class WeatherInfoBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                'assets/images/cloudy.png',
+              Image.network(
+                'https:' + weathermodel.image.toString(),
               ),
               Text(
-                '18',
+                weathermodel.temp.toString(),
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -44,11 +44,11 @@ class WeatherInfoBody extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Max : 23',
+                    'Max : ' + weathermodel.maxTemp.toString(),
                     style: TextStyle(fontSize: 18),
                   ),
                   Text(
-                    'Min : 16',
+                    'Min : ' + weathermodel.minTemp.toString(),
                     style: TextStyle(fontSize: 18),
                   )
                 ],
@@ -56,7 +56,7 @@ class WeatherInfoBody extends StatelessWidget {
             ],
           ),
           Text(
-            'Light Rain',
+            weathermodel.weatherCondition,
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           )
         ],
