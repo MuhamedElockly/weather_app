@@ -7,9 +7,11 @@ class NoWitherBody extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'No Weather Today',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          Center(
+            child: Text(
+              'No Weather Today',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            ),
           )
         ],
       ),
