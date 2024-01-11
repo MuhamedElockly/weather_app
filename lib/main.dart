@@ -60,9 +60,7 @@ MaterialColor getThemeColor(String? condition) {
   };
 
   // Check for exact matches first
-  if (weatherColors.containsKey(condition)) {
-    return weatherColors[condition] as MaterialColor; // Cast to MaterialColor
-  }
+
 
   // Handle broader conditions and variations
   if (condition.contains('Sunny')) {
