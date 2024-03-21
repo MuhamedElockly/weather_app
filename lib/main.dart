@@ -16,22 +16,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetWeatherCubit(),
-      child: Builder(
-        builder: (context) => BlocBuilder<GetWeatherCubit, WeatherState>(
-          builder: (context, state) {
-            return MaterialApp(
-              theme: ThemeData(
-                primarySwatch: getThemeColor(
-                  BlocProvider.of<GetWeatherCubit>(context)
-                      .weatherModel
-                      ?.weatherCondition,
-                ),
-              ),
-              debugShowCheckedModeBanner: false,
-              home: Home(),
-            );
-          },
+      child: MaterialApp(
+        theme: ThemeData(
+          primarySwatch: getThemeColor(
+            BlocProvider.of<GetWeatherCubit>(context)
+                .weatherModel
+                ?.weatherCondition,
+          ),
         ),
+        debugShowCheckedModeBanner: false,
+        home: Home(),
       ),
     );
   }
@@ -60,7 +54,6 @@ MaterialColor getThemeColor(String? condition) {
   };
 
   // Check for exact matches first
-
 
   // Handle broader conditions and variations
   if (condition.contains('Sunny')) {

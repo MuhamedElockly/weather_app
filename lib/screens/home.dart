@@ -10,35 +10,42 @@ import 'package:weather_app/widgets/weather_info_body.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Home',
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) {
-                  return SearchView();
-                }),
-              );
-            },
-            icon: Icon(Icons.search),
+    return BlocConsumer<GetWeatherCubit, WeatherState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Home',
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return SearchView();
+                    }),
+                  );
+                },
+                icon: Icon(Icons.search),
+              ),
+            ],
           ),
-        ],
-      ),
-      body: BlocBuilder<GetWeatherCubit, WeatherState>(
-        builder: (context, state) {
-          if (state is NoWeatherState) {
-            return NoWitherBody();
-          } else if (state is WeatherLoadedState) {
-            return WeatherInfoBody();
-          } else {
-            return Text('Ops, there was an error !');
-          }
-        },
-      ),
+          body: BlocBuilder<GetWeatherCubit, WeatherState>(
+            builder: (context, state) {
+              if (state is WeatherFailureState) {
+                return NoWitherBody();
+              } else if (state is WeatherSuccessState) {
+                return WeatherInfoBody();
+              } else {
+                return Text('Ops, there was an error !');
+              }
+            },
+          ),
+        );
+      },
     );
   }
 }
