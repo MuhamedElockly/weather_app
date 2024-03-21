@@ -5,7 +5,10 @@ import 'package:weather_app/cubits/get_weather_cubit/get_weather_states.dart';
 import 'package:weather_app/screens/home.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => GetWeatherCubit(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,19 +17,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetWeatherCubit(),
-      child: MaterialApp(
-        theme: ThemeData(
-          primarySwatch: getThemeColor(
-            BlocProvider.of<GetWeatherCubit>(context)
-                .weatherModel
-                ?.weatherCondition,
-          ),
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: getThemeColor(
+          BlocProvider.of<GetWeatherCubit>(context)
+              .weatherModel
+              ?.weatherCondition,
+          //null
         ),
-        debugShowCheckedModeBanner: false,
-        home: Home(),
       ),
+      debugShowCheckedModeBanner: false,
+      home: Home(),
     );
   }
 }
